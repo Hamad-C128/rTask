@@ -35,7 +35,7 @@
 function countClicks() {
 	var clickLimit = 10; 
 	if(ClickCount>=clickLimit) {
-        alert("لفد خسرت كانت لديك 10 محاولات جرب مره اخرى");
+        alert(`.لقد خسرت كانت لديك 10 محاولات جرب مره اخرى كان الرقم ${number}`);
         location.reload();
 		return false;
 	}
@@ -54,10 +54,13 @@ function countClicks() {
                 location.reload();
                 alert(`احسنت اجابتك صحيحه , الرقم كان ${number}`);
 
-            }else if(input+15 == number && input-15 == number){
+            }else if (input + 15 <= number || input + 15 >= 15){
                 output.innerHTML = "...حارر"
             }
-            else if (input-15 != number && input+15 != number){
+            else if  (input - 15 <= number || input - 15 >= 15){
+                output.innerHTML = "...حارر"
+            }
+            else {
                 output.innerHTML = "...باردد"
             }
             
