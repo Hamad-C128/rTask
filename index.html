@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>خمن</title>
+    <style>
+        body{
+            background-color: #476B6D;
+            color: white;
+        }
+        #container{
+            margin-left: 30%;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1 style="margin-left: 180px;">حار او بارد</h1>
+<p>اختر رقم عشوائي من 1 الى 100 . جرب حظك و حاول تخمن, اذا خمنت رقم قريب (الفرق بين <br> <p style="margin-left: 50px;margin-top: -12px;"> الرقمين 15 او اقل) راح يطلع لك حار واذا خمنته بعيد رااح يطلع لك بار.عندك </p><br> <p style="margin-left: 190px;margin-top: -29px;"> 10 محاولات </p></p>
+<div style="background-color: #EFEFEF; padding: 10px; margin-right: 56%; color: #B9B9B9; border-radius: 8px; height: 90px;"><p style="margin-left: 35%;" id="outputtext"> باقي 10 محاولات</p> <p id="counter" style="margin-top: -35px; margin-left: 70px; color: red;">10</p>
+<button onclick="return countClicks(); location.reload(); " id="btn" style="margin-left: 16%;height: 27px; color: white;background-color: #F3A73B; border-radius: 4px;" >خمن</button><input style="border-radius: 4px; height: 23px;width: 250px; margin-left: 4px;" type="text" id="userInput"  placeholder="ادخل توقعك">
+</div>
+    </div>
+    <script>
+        
+        let btn = document.getElementById('btn');
+        let output = document.getElementById('outputtext');
+               
+        let number = [Math.floor(Math.random() * 100)+ 1]
+            console.log(number)
+
+
+            var ClickCount = 0;
+function countClicks() {
+	var clickLimit = 10; 
+	if(ClickCount>=clickLimit) {
+        alert("لفد خسرت كانت لديك 10 محاولات جرب مره اخرى");
+        location.reload();
+		return false;
+	}
+	        else {
+	            	ClickCount++;
+		                  return true;
+	         }
+               }
+        btn.addEventListener('click' , function(){
+
+            let input12 = document.getElementById('userInput');
+            let input = input12.value;
+            console.log(input)
+            if(input == number){
+                output.innerHTML = `احسنت اجابتك صحيحه , الرقم كان ${number}`
+                location.reload();
+                alert(`احسنت اجابتك صحيحه , الرقم كان ${number}`);
+
+            }else if(input+15 == number && input-15 == number){
+                output.innerHTML = "...حارر"
+            }
+            else if (input-15 != number && input+15 != number){
+                output.innerHTML = "...باردد"
+            }
+            
+        })
+        var poke = document.getElementById('btn');
+    var cmp = document.getElementById('counter');
+    poke.addEventListener('click', myfonction)
+    function myfonction() {
+      cmp.innerHTML = parseInt(cmp.innerHTML) -1;
+
+
+    }
+    </script>
+</body>
+</html>
+
